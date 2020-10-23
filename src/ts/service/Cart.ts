@@ -12,15 +12,13 @@ export default class Cart {
     }
 
     sumAll(): number {
-      let init: number = 0;
-      let sum = this._items.reduce((value, current) => value + current.price, init);
-      return sum;
+      let init = 0;
+      return this._items.reduce((value, current) => value + current.price, init);
     }
 
     sumAllWithDiscount(discount: number): number {
-      const sum: number = this.sumAll();
-      const result: number = sum - (sum * (discount / 100));
-      return +result.toFixed(1);
+      const sum = this.sumAll();
+      return Number((sum - (sum * (discount / 100))).toFixed(1));
     }
 
     productDelete(id: number): void {
